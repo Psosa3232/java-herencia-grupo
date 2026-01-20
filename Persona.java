@@ -1,5 +1,5 @@
 // Clase Persona
-public class Persona {
+public abstract class Persona {
     private String dni;
     protected String nombre;
     protected int edad;

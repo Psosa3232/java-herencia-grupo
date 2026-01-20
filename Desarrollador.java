@@ -22,8 +22,7 @@ public class Desarrollador extends Empleado {
 
     @Override
     public String toString() {
-        return "Desarrollador: " + nombre + " (" + lenguajePrincipal + "), DNI: " + getDni() +
-               ", Edad: " + edad + ", Salario: " + calcularSalario();
+        return "Desarrollador: " + nombre + " (" + lenguajePrincipal + "), DNI: " + getDni() + ", Edad: " + edad + ", Salario: " + calcularSalario();
     }
 }
 

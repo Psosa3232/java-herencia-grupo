@@ -1,4 +1,4 @@
-public class Empleado extends Persona {
+public abstract class Empleado extends Persona {
     protected double salarioBase;
     protected int antiguedadAnios;
 
@@ -10,8 +10,7 @@ public class Empleado extends Persona {
     }
 
     
-    public double calcularSalario() {
-        return salarioBase + (antiguedadAnios * 100);
+    public abstract double calcularSalario() {
     }
 
     @Override
