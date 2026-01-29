@@ -1,19 +1,22 @@
+import java.time.LocalDate;
+
 public class Manager extends Empleado {
     protected int personasACargo;
     protected String titulo; // "Team Lead", "Department Head", "Director"
     protected double presupuestoGestionado;
     protected int reunionesSemanales;
 
-    public Manager(String dni, String nombre, int edad, double salarioBase, int antiguedadAnios, 
+   
+    public Manager(String dni, String nombre, LocalDate fecha_Nacimiento, double salarioBase, int antiguedadAnios, 
                    int personasACargo, String titulo, double presupuestoGestionado, int reunionesSemanales) {
-        super(dni, nombre, edad, salarioBase, antiguedadAnios);
+        super(dni, nombre, fecha_Nacimiento, salarioBase, antiguedadAnios); 
         this.personasACargo = personasACargo;
         this.titulo = titulo;
         this.presupuestoGestionado = presupuestoGestionado;
         this.reunionesSemanales = reunionesSemanales;
     }
 
-   
+    
     public int getPersonasACargo() {
         return personasACargo;
     }
@@ -22,7 +25,6 @@ public class Manager extends Empleado {
         this.personasACargo = personas;
     }
 
-    
     public String getTitulo() {
         return titulo;
     }
@@ -47,25 +49,21 @@ public class Manager extends Empleado {
         this.reunionesSemanales = reuniones;
     }
 
-    
     @Override
     public double calcularSalario() {
         double plusPersonas = personasACargo * 250; // 250€ por persona a cargo
         double bonusPresupuesto = presupuestoGestionado * 0.002; // 0.2% del presupuesto gestionado
-        return salarioBase + (antiguedadAnios * 200) + plusPersonas + bonusPresupuesto;
+        return getSalarioBase() + (getAntiguedadAnios() * 200) + plusPersonas + bonusPresupuesto;
     }
 
-    
     public void aprobarHorasExtra(String idDesarrollador, double horas) {
-        System.out.println("El manager " + nombre + " ha aprobado " + horas + 
+        System.out.println("El manager " + getNombre() + " ha aprobado " + horas + 
                           " horas extra para el desarrollador con ID: " + idDesarrollador);
-       
     }
 
-  
     @Override
     public String toString() {
-        return titulo + ": " + nombre + ", DNI: " + getDni() +
+        return titulo + ": " + getNombre() + ", DNI: " + getDni() +
                ", Edad: " + getEdad() + 
                ", Personas a cargo: " + personasACargo +
                ", Presupuesto gestionado: " + presupuestoGestionado + "€" +
