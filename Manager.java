@@ -66,7 +66,7 @@ public class Manager extends Empleado {
     @Override
     public String toString() {
         return titulo + ": " + nombre + ", DNI: " + getDni() +
-               ", Edad: " + edad + 
+               ", Edad: " + getEdad() + 
                ", Personas a cargo: " + personasACargo +
                ", Presupuesto gestionado: " + presupuestoGestionado + "€" +
                ", Reuniones semanales: " + reunionesSemanales +
