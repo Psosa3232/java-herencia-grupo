@@ -34,7 +34,7 @@ public class GestorFichajes {
         for (Fichaje fichaje : lista) {
             LocalDateTime momento = fichaje.getFechaHoraEntrada() != null ? fichaje.getFechaHoraEntrada() : fichaje.getFechaHoraSalida();
             if (momento != null && momento.toLocalDate().equals(fecha)) {
-                resultado.add(f);
+                resultado.add(fichaje);
             }
         }
         return resultado;
@@ -50,7 +50,7 @@ public class GestorFichajes {
         for (Fichaje fichaje : lista) {
             LocalDateTime m = fichaje.getFechaHoraEntrada() != null ? fichaje.getFechaHoraEntrada() : fichaje.getFechaHoraSalida();
             if (m != null && m.getMonthValue() == mes && m.getYear() == año) {
-                delMes.add(f);
+                delMes.add(fichaje);
             }
         }
 

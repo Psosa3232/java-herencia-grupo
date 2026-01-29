@@ -1,6 +1,9 @@
 
 // Clase Persona
-main
+
+import java.time.LocalDate;
+import java.time.Period;
+
 public abstract class Persona {
     private String dni;
     protected String nombre;
