@@ -1,22 +1,60 @@
-public class Empleado extends Persona {
-    protected double salarioBase;
-    protected int antiguedadAnios;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-    
-    public Empleado(String dni, String nombre, int edad, double salarioBase, int antiguedadAnios) {
-        super(dni, nombre, edad);
-        this.salarioBase = salarioBase;
-        this.antiguedadAnios = antiguedadAnios;
-    }
+public abstract class Empleado extends Persona {
 
-    
-    public double calcularSalario() {
-        return salarioBase + (antiguedadAnios * 100);
-    }
+protected String idEmpleado;
+protected double salarioBase;
+protected LocalDate fechaContratacion;
+protected String departamento;
+protected double jornadaHoraria; // horas por día
+protected boolean activo;
 
-    @Override
-    public String toString() {
-        return "Empleado: " + nombre + ", DNI: " + getDni() +
-               ", Edad: " + edad + ", Salario: " + calcularSalario();
-    }
+public Empleado(String dni, String nombre, int edad,
+String idEmpleado,
+double salarioBase,
+LocalDate fechaContratacion,
+String departamento,
+double jornadaHoraria,
+boolean activo) {
+
+super(dni, nombre, edad);
+this.idEmpleado = idEmpleado;
+this.salarioBase = salarioBase;
+this.fechaContratacion = fechaContratacion;
+this.departamento = departamento;
+this.jornadaHoraria = jornadaHoraria;
+this.activo = activo;
+}
+
+/**
+* Calcula la antigüedad del empleado en años completos
+*/
+public int calcularAntiguedad() {
+return (int) ChronoUnit.YEARS.between(fechaContratacion, LocalDate.now());
+}
+
+/**
+* Calcula el salario incluyendo un plus del 3% por cada año de antigüedad
+*/
+public double calcularSalario() {
+int antiguedad = calcularAntiguedad();
+double plusAntiguedad = salarioBase * 0.03 * antiguedad;
+return salarioBase + plusAntiguedad;
+}
+
+@Override
+public String toString() {
+return "Empleado{" +
+"ID='" + idEmpleado + '\'' +
+", Nombre='" + nombre + '\'' +
+", DNI='" + getDni() + '\'' +
+", Edad=" + edad +
+", Departamento='" + departamento + '\'' +
+", Antigüedad=" + calcularAntiguedad() + " años" +
+", Jornada=" + jornadaHoraria + "h/día" +
+", Activo=" + activo +
+", Salario=" + calcularSalario() +
+'}';
+}
 }
