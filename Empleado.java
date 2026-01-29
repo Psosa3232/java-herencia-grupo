@@ -27,16 +27,12 @@ this.jornadaHoraria = jornadaHoraria;
 this.activo = activo;
 }
 
-/**
-* Calcula la antigüedad del empleado en años completos
-*/
+
 public int calcularAntiguedad() {
 return (int) ChronoUnit.YEARS.between(fechaContratacion, LocalDate.now());
 }
 
-/**
-* Calcula el salario incluyendo un plus del 3% por cada año de antigüedad
-*/
+
 public double calcularSalario() {
 int antiguedad = calcularAntiguedad();
 double plusAntiguedad = salarioBase * 0.03 * antiguedad;
