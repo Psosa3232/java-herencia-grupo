@@ -1,6 +1,9 @@
 
 // Clase Persona
-main
+
+import java.time.LocalDate;
+import java.time.Period;
+
 public abstract class Persona {
     private String dni;
     protected String nombre;
@@ -36,7 +39,7 @@ public abstract class Persona {
 
     public String getTelefono() {
         return telefono;
-    } 
+    }
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
