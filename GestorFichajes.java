@@ -34,13 +34,13 @@ public class GestorFichajes {
         for (Fichaje fichaje : lista) {
             LocalDateTime momento = fichaje.getFechaHoraEntrada() != null ? fichaje.getFechaHoraEntrada() : fichaje.getFechaHoraSalida();
             if (momento != null && momento.toLocalDate().equals(fecha)) {
-                resultado.add(f);
+                resultado.add(fichaje);
             }
         }
         return resultado;
     }
 
-    // Calcula horas trabajadas en un mes y año 
+    // Calcula horas trabajadas en un mes y año
     public double calcularHorasMensuales(String idEmpleado, int mes, int año) {
         List<Fichaje> lista = fichajes.get(idEmpleado);
         if (lista == null || lista.isEmpty()) return 0.0;
@@ -50,7 +50,7 @@ public class GestorFichajes {
         for (Fichaje fichaje : lista) {
             LocalDateTime m = fichaje.getFechaHoraEntrada() != null ? fichaje.getFechaHoraEntrada() : fichaje.getFechaHoraSalida();
             if (m != null && m.getMonthValue() == mes && m.getYear() == año) {
-                delMes.add(f);
+                delMes.add(fichaje);
             }
         }
 
@@ -67,8 +67,8 @@ public class GestorFichajes {
             Fichaje sal = delMes.get(i + 1);
             if (ent.getTipo().equals("ENTRADA") && sal.getTipo().equals("SALIDA")) {
                 long minutos = java.time.temporal.ChronoUnit.MINUTES.between(
-                    ent.getFechaHoraEntrada(),
-                    sal.getFechaHoraSalida()
+                        ent.getFechaHoraEntrada(),
+                        sal.getFechaHoraSalida()
                 );
                 totalHoras += minutos / 60.0;
                 i++; // saltar la salida ya usada
